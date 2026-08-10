@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Step2 = ({setCurrent ,formData , setFormData}) => {
+const Step2 = ({setCurrent ,formData , setFormData , handlechange}) => {
   return (
 
     <div>
@@ -21,7 +21,8 @@ const Step2 = ({setCurrent ,formData , setFormData}) => {
 
                                 <input 
                                 value={formData.phone}
-                                onChange={(e)=>setFormData({...formData , phone:e.target.value})}
+                                name="phone"
+                                onChange={handlechange}
                                 type="tel" 
                                 placeholder='Enter your number_1' 
                                 inputMode='numeric'
@@ -34,8 +35,9 @@ const Step2 = ({setCurrent ,formData , setFormData}) => {
                                 <h2 className='p-2 text-3xl font-medium'>Alternate number:</h2>
 
                                 <input 
+                                name = "alternativephone"
                                 value={formData.alternativephone}
-                                onChange={(e)=>setFormData({...formData , alternativephone :e.target.value})}
+                                onChange={handlechange}
                                 type="tel" 
                                 placeholder='Enter your number_2' 
                                 inputMode='numeric'
@@ -49,8 +51,9 @@ const Step2 = ({setCurrent ,formData , setFormData}) => {
                                 <h2 className='p-2 text-3xl font-medium'>State:</h2>
 
                                 <input 
+                                name='state'
                                 value={formData.state}
-                                onChange={(e)=>setFormData({...formData , state:e.target.value})}
+                                onChange={handlechange}
                                 type="text" 
                                 placeholder='State name' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 '
@@ -67,11 +70,10 @@ const Step2 = ({setCurrent ,formData , setFormData}) => {
 
                                 <input
                                 value={formData.email}
-                                onChange={(e)=>setFormData({...formData , email:e.target.value})} 
+                                onChange={handlechange} 
                                 type="email" 
-                                placeholder='Enter your e-mail'
-                                id='dob' 
-                                name='dob' 
+                                placeholder='Enter your e-mail' 
+                                name='email' 
                                 className='w-100 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent  placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
                                 />
 
@@ -81,8 +83,9 @@ const Step2 = ({setCurrent ,formData , setFormData}) => {
                                 <h2 className='p-2 text-3xl font-medium'>Parent number:</h2> 
 
                                 <input 
+                                name='parentphone'
                                 value={formData.parentphone}
-                                onChange={(e)=>setFormData({...formData , parentphone :e.target.value})}
+                                onChange={handlechange}
                                 type="tel" 
                                 inputMode='numeric'
                                 maxLength="10"
@@ -98,7 +101,7 @@ const Step2 = ({setCurrent ,formData , setFormData}) => {
                                 
                                 <input 
                                 value={formData.country}
-                                onChange={(e)=>setFormData({...formData , country:e.target.value})}
+                                onChange={handlechange}
                                 type="text" 
                                 id='country' 
                                 name='country' 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Step1 = ({setCurrent ,formData , setFormData}) => {
+const Step1 = ({setCurrent ,formData , setFormData , handlechange}) => {
   return (
 
     <div>
@@ -21,8 +21,9 @@ const Step1 = ({setCurrent ,formData , setFormData}) => {
 
                                 <input 
                                 type="text" 
+                                name = "name"
                                 value={formData.name}
-                                onChange={(e)=>setFormData({...formData, name: e.target.value})}
+                                onChange={handlechange}
                                 placeholder='Enter your name' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
                                 />
@@ -32,9 +33,10 @@ const Step1 = ({setCurrent ,formData , setFormData}) => {
                                 <h2 className='p-2 text-3xl font-medium'>Age:</h2>
 
                                 <input 
-                                type="number" 
+                                type="number"
+                                name = "age" 
                                 value={formData.age}
-                                onChange={(e)=>setFormData({...formData , age:e.target.value})}
+                                onChange={handlechange}
                                 placeholder='Enter your Age' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
                                 />
@@ -49,10 +51,10 @@ const Step1 = ({setCurrent ,formData , setFormData}) => {
                                 className="w-6 h-6 appearance-none rounded-full border border-gray-500 bg-transparent checked:bg-purple-900" 
                                 type="radio" 
                                 id='male' 
-                                name='gender'
+                                name='sex'
                                 value="male"
                                 checked = {formData.sex=== "male"}
-                                onChange={(e)=>setFormData({...formData , sex:e.target.value})}
+                                onChange={handlechange}
                                 />
                                 <label className='text-2xl font-medium pl-2 pr-10' htmlFor="male">Male</label>
 
@@ -60,10 +62,10 @@ const Step1 = ({setCurrent ,formData , setFormData}) => {
                                 className="w-6 h-6 appearance-none rounded-full border border-gray-500 bg-transparent checked:bg-purple-900 " 
                                 type="radio" 
                                 id='female' 
-                                name='gender'
+                                name='sex'
                                 value="female"
                                 checked ={formData.sex === "female"}
-                                onChange={(e)=>setFormData({...formData , sex:e.target.value})}
+                                onChange={handlechange}
                                 />
                                 <label className='text-2xl font-medium pl-2' htmlFor="female">Female</label>
             
@@ -77,8 +79,9 @@ const Step1 = ({setCurrent ,formData , setFormData}) => {
                                 <h2 className='p-2 text-3xl font-medium'>Date of birth :</h2>
 
                                 <input 
+                            
                                 value={formData.dob}
-                                onChange={(e)=>setFormData({...formData , dob:e.target.value})}
+                                onChange={handlechange}
                                 type="date" 
                                 id='dob' 
                                 name='dob' 
@@ -90,9 +93,10 @@ const Step1 = ({setCurrent ,formData , setFormData}) => {
                             <div className=' pl-15 pt-10  mt-12'>
                                 <h2 className='p-2 text-3xl font-medium'>Address :</h2> 
 
-                                <input 
+                                <input
+                                name="address" 
                                 value={formData.address}
-                                onChange={(e)=>setFormData({...formData , address :e.target.value})}
+                                onChange={handlechange}
                                 type="text" 
                                 placeholder='Enter your Address' 
                                 className='w-100 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
@@ -106,7 +110,7 @@ const Step1 = ({setCurrent ,formData , setFormData}) => {
                                 
                                 <input 
                                 value={formData.pincode}
-                                onChange={(e)=>setFormData({...formData , pincode :e.target.value})}
+                                onChange={handlechange}
                                 type="text" 
                                 id='pincode' 
                                 name='pincode' 

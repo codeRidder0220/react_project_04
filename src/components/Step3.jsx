@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Step3 = ({setCurrent ,formData , setFormData}) => {
+const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillchange}) => {
   return (
 
     <div>
@@ -20,8 +20,9 @@ const Step3 = ({setCurrent ,formData , setFormData}) => {
                                 <h2 className='p-2 text-3xl font-medium'>College/university:</h2>
 
                                 <input 
+                                name='college'
                                 value={formData.college}
-                                onChange={(e)=>setFormData({...formData , college:e.target.value})}
+                                onChange={handlechange}
                                 type="text" 
                                 placeholder='college/university' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
@@ -32,8 +33,9 @@ const Step3 = ({setCurrent ,formData , setFormData}) => {
                                 <h2 className='p-2 text-3xl font-medium'>Course:</h2>
 
                                 <input 
+                                name='course'
                                 value={formData.course}
-                                onChange={(e)=>setFormData({...formData , course:e.target.value})}
+                                onChange={handlechange}
                                 type="text" 
                                 placeholder='course name' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
@@ -46,7 +48,7 @@ const Step3 = ({setCurrent ,formData , setFormData}) => {
 
                                 <select 
                                 value={formData.branch}
-                                onChange={(e)=>setFormData({...formData , branch:e.target.value})}
+                                onChange={handlechange}
                                 id='branch'
                                 name='branch' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent outline-none'
@@ -70,22 +72,22 @@ const Step3 = ({setCurrent ,formData , setFormData}) => {
                                 <input 
                                 className="w-6 h-6 appearance-none rounded-full border border-gray-500 bg-transparent checked:bg-purple-900" 
                                 type="radio" 
-                                id='yes' 
-                                name='tick'
+                                 
+                                name='currstudy'
                                 value="yes"
-                                checked = {formData.currstudy === "yes"}
-                                onChange={(e)=>setFormData({...formData , currstudy:e.target.value})}
+                                checked = {formData.currstudy}
+                                onChange={handlechange}
                                 />
                                 <label className='text-2xl font-medium pl-2 pr-10' htmlFor="yes">Yes</label>
 
                                 <input 
                                 className="w-6 h-6 appearance-none rounded-full border border-gray-500 bg-transparent checked:bg-purple-900 " 
                                 type="radio" 
-                                id='no' 
-                                name='tick'
+                                
+                                name='currstudy'
                                 value="no"
-                                checked = {formData.currstudy === "no"}
-                                onChange={(e)=>setFormData({...formData , currstudy:e.target.value})}
+                                checked = {formData.currstudy}
+                                onChange={handlechange}
                                 />
                                 <label className='text-2xl font-medium pl-2' htmlFor="no">No</label>
             
@@ -100,7 +102,7 @@ const Step3 = ({setCurrent ,formData , setFormData}) => {
 
                                 <select 
                                 value={formData.enroll}
-                                onChange={(e)=>setFormData({...formData , enroll:e.target.value})}
+                                onChange={handlechange}
                                 id='enroll' 
                                 name='enroll' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent  placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
@@ -122,10 +124,10 @@ const Step3 = ({setCurrent ,formData , setFormData}) => {
                                 <h2 className='p-2 text-3xl font-medium'>Graduation year:</h2>
 
                                 <select 
-                                value={formData.graduation}
-                                onChange={(e)=>setFormData({...formData , graduation:e.target.value})}
-                                id='grad' 
-                                name='grad' 
+                                value={formData.graduate}
+                                onChange={handlechange}
+                                 
+                                name='graduate' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent  placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
                                 >
                                     <option value="">Select Year</option>
@@ -134,7 +136,7 @@ const Step3 = ({setCurrent ,formData , setFormData}) => {
                                     <option value="2027">2027</option>
                                     <option value="2028">2028</option>
                                     <option value="2029">2029</option>
-                                    <option value="2023">2023</option>
+                                    <option value="2023">2030</option>
 
                                 </select>
 
@@ -148,16 +150,16 @@ const Step3 = ({setCurrent ,formData , setFormData}) => {
                                 
                                 <select
                                 value={formData.experience}
-                                onChange={(e)=>setFormData({...formData , experience:e.target.value})}
+                                onChange={handlechange}
                                 name='experience'
                                 className="w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent placeholder:text-gray-700  outline-none " 
                                 > 
                                     <option value="">Select Experience</option>
-                                    <option value="">Fresher</option>
-                                    <option value="">0 - 1</option>
-                                    <option value="">1 - 2</option>
-                                    <option value="">2 - 3</option>
-                                    <option value="">3+ years</option>
+                                    <option value="Fresher">Fresher</option>
+                                    <option value="0 - 1">0 - 1</option>
+                                    <option value="1 - 2">1 - 2</option>
+                                    <option value="2 - 3">2 - 3</option>
+                                    <option value="3+ years">3+ years</option>
 
                                 </select>
             
@@ -174,58 +176,86 @@ const Step3 = ({setCurrent ,formData , setFormData}) => {
                                     type="checkbox" 
                                     value="cpp" 
                                     checked={formData.skills.includes("cpp")}
-                                    onChange={(e) => {
-                                        if (e.target.checked) {
-                                        setFormData({
-                                            ...formData,
-                                            skills: [...formData.skills, e.target.value]
-                                        });
-                                        } else {
-                                        setFormData({
-                                            ...formData,
-                                            skills: formData.skills.filter(
-                                            (skill) => skill !== e.target.value
-                                            )
-                                        });
-                                        }
-                                    }}
+                                    onChange={handleskillchange}
                                     
                                     />
                                     C++
                                 </label>
 
                                 <label>
-                                    <input className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' type="checkbox" value="html" />
+                                    <input 
+                                    className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' 
+                                    type="checkbox" 
+                                    value="html" 
+                                    checked={formData.skills.includes("html")}
+                                    onChange={handleskillchange}
+                                    />
                                     HTML
                                 </label>
 
                                 <label>
-                                    <input className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' type="checkbox" value="css" />
+                                    <input 
+                                    className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' 
+                                    type="checkbox" 
+                                    value="css"
+                                    checked={formData.skills.includes("css")}
+                                    onChange={handleskillchange} 
+                                    />
                                     CSS
                                 </label>
 
                                 <label>
-                                    <input className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' type="checkbox" value="web-3" />
+                                    <input 
+                                    className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' 
+                                    type="checkbox" 
+                                    value="web-3"
+                                    checked={formData.skills.includes("web-3")}
+                                    onChange={handleskillchange} 
+                                    />
                                     Web3
                                 </label>
 
                                 <label>
-                                    <input className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' type="checkbox" value="react" />
+                                    <input 
+                                    className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' 
+                                    type="checkbox" 
+                                    value="react"
+                                    checked={formData.skills.includes("react")}
+                                    onChange={handleskillchange} 
+                                    />
                                     React
                                 </label>
 
                                 <label>
-                                    <input className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' type="checkbox" value="dsa" />
+                                    <input 
+                                    className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' 
+                                    type="checkbox" 
+                                    value="dsa"
+                                    checked={formData.skills.includes("dsa")}
+                                    onChange={handleskillchange}
+                                     />
                                     DSA
                                 </label>
 
                                 <label>
-                                    <input className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' type="checkbox" value="node.js" />
+                                    <input 
+                                    className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' 
+                                    type="checkbox" 
+                                    value="node.js"
+                                    checked={formData.skills.includes("node.js")}
+                                    onChange={handleskillchange} 
+                                    />
                                     node.js
                                 </label>
 
                                 <label>
-                                    <input className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' type="checkbox" value="Js" />
+                                    <input 
+                                    className='appearance-none border border-gray-500 w-4 h-4 rounded-full checked:bg-purple-900' 
+                                    type="checkbox" 
+                                    value="Js"
+                                    checked={formData.skills.includes("Js")}
+                                    onChange={handleskillchange} 
+                                    />
                                     JS
                                 </label>
 
