@@ -72,10 +72,10 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
                                 <input 
                                 className="w-6 h-6 appearance-none rounded-full border border-gray-500 bg-transparent checked:bg-purple-900" 
                                 type="radio" 
-                                 
+                                
                                 name='currstudy'
                                 value="yes"
-                                checked = {formData.currstudy}
+                                checked = {formData.currstudy=="yes"}
                                 onChange={handlechange}
                                 />
                                 <label className='text-2xl font-medium pl-2 pr-10' htmlFor="yes">Yes</label>
@@ -86,7 +86,7 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
                                 
                                 name='currstudy'
                                 value="no"
-                                checked = {formData.currstudy}
+                                checked = {formData.currstudy=="no"}
                                 onChange={handlechange}
                                 />
                                 <label className='text-2xl font-medium pl-2' htmlFor="no">No</label>

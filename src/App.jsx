@@ -77,7 +77,7 @@ function App() {
       current === 2 &&  (<Step2 setCurrent={setCurrent} formData={formData} setFormData={setFormData} handlechange={handlechange}/>)
     } 
     {
-      current === 3 &&  (<Step3 setCurrent={setCurrent} formData={formData} setFormData={setFormData} handleskillchange={handleskillchange}/>)
+      current === 3 &&  (<Step3 setCurrent={setCurrent} formData={formData} setFormData={setFormData} handlechange={handlechange} handleskillchange={handleskillchange}/>)
     } 
     {
       current === 4 &&  (<Step4 setCurrent={setCurrent} formData={formData} setFormData={setFormData} handlechange={handlechange}/>)
