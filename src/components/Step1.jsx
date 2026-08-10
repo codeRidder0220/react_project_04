@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Step1 = () => {
+const Step1 = ({setCurrent ,formData , setFormData}) => {
   return (
 
     <div>
@@ -21,6 +21,8 @@ const Step1 = () => {
 
                                 <input 
                                 type="text" 
+                                value={formData.name}
+                                onChange={(e)=>setFormData({...formData, name: e.target.value})}
                                 placeholder='Enter your name' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
                                 />
@@ -31,6 +33,8 @@ const Step1 = () => {
 
                                 <input 
                                 type="number" 
+                                value={formData.age}
+                                onChange={(e)=>setFormData({...formData , age:e.target.value})}
                                 placeholder='Enter your Age' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
                                 />
@@ -46,6 +50,9 @@ const Step1 = () => {
                                 type="radio" 
                                 id='male' 
                                 name='gender'
+                                value="male"
+                                checked = {formData.sex=== "male"}
+                                onChange={(e)=>setFormData({...formData , sex:e.target.value})}
                                 />
                                 <label className='text-2xl font-medium pl-2 pr-10' htmlFor="male">Male</label>
 
@@ -54,6 +61,9 @@ const Step1 = () => {
                                 type="radio" 
                                 id='female' 
                                 name='gender'
+                                value="female"
+                                checked ={formData.sex === "female"}
+                                onChange={(e)=>setFormData({...formData , sex:e.target.value})}
                                 />
                                 <label className='text-2xl font-medium pl-2' htmlFor="female">Female</label>
             
@@ -67,6 +77,8 @@ const Step1 = () => {
                                 <h2 className='p-2 text-3xl font-medium'>Date of birth :</h2>
 
                                 <input 
+                                value={formData.dob}
+                                onChange={(e)=>setFormData({...formData , dob:e.target.value})}
                                 type="date" 
                                 id='dob' 
                                 name='dob' 
@@ -79,6 +91,8 @@ const Step1 = () => {
                                 <h2 className='p-2 text-3xl font-medium'>Address :</h2> 
 
                                 <input 
+                                value={formData.address}
+                                onChange={(e)=>setFormData({...formData , address :e.target.value})}
                                 type="text" 
                                 placeholder='Enter your Address' 
                                 className='w-100 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
@@ -91,6 +105,8 @@ const Step1 = () => {
                                 <h2 className='p-2 text-3xl font-medium'>Pin code :</h2>
                                 
                                 <input 
+                                value={formData.pincode}
+                                onChange={(e)=>setFormData({...formData , pincode :e.target.value})}
                                 type="text" 
                                 id='pincode' 
                                 name='pincode' 
@@ -106,7 +122,12 @@ const Step1 = () => {
                 </div>
 
                 <div className="w-250 flex justify-end mt-10 mb-10">
-                <button className='bg-black/30 backdrop-blur-md border border-black  rounded-3xl text-2xl text-gray-400 p-3 w-35 '>next</button>
+                <button 
+                className='bg-black/30 backdrop-blur-md border border-black  rounded-3xl text-2xl text-gray-400 p-3 w-35 '
+                onClick={()=>setCurrent(prev => prev+1)}
+                >next
+                </button>
+
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Step2 = () => {
+const Step2 = ({setCurrent ,formData , setFormData}) => {
   return (
 
     <div>
@@ -20,6 +20,8 @@ const Step2 = () => {
                                 <h2 className='p-2 text-3xl font-medium'>phone number:</h2>
 
                                 <input 
+                                value={formData.phone}
+                                onChange={(e)=>setFormData({...formData , phone:e.target.value})}
                                 type="tel" 
                                 placeholder='Enter your number_1' 
                                 inputMode='numeric'
@@ -32,11 +34,13 @@ const Step2 = () => {
                                 <h2 className='p-2 text-3xl font-medium'>Alternate number:</h2>
 
                                 <input 
+                                value={formData.alternativephone}
+                                onChange={(e)=>setFormData({...formData , alternativephone :e.target.value})}
                                 type="tel" 
                                 placeholder='Enter your number_2' 
                                 inputMode='numeric'
                                 maxLength="10"
-                                className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
+                                className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 '
                                 />
 
                             </div>
@@ -45,9 +49,11 @@ const Step2 = () => {
                                 <h2 className='p-2 text-3xl font-medium'>State:</h2>
 
                                 <input 
+                                value={formData.state}
+                                onChange={(e)=>setFormData({...formData , state:e.target.value})}
                                 type="text" 
                                 placeholder='State name' 
-                                className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
+                                className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 '
                                 />
 
                             </div>
@@ -59,7 +65,9 @@ const Step2 = () => {
                             <div className=' pl-15 pt-10  mt-10'>
                                 <h2 className='p-2 text-3xl font-medium'>E-mail :</h2>
 
-                                <input 
+                                <input
+                                value={formData.email}
+                                onChange={(e)=>setFormData({...formData , email:e.target.value})} 
                                 type="email" 
                                 placeholder='Enter your e-mail'
                                 id='dob' 
@@ -73,6 +81,8 @@ const Step2 = () => {
                                 <h2 className='p-2 text-3xl font-medium'>Parent number:</h2> 
 
                                 <input 
+                                value={formData.parentphone}
+                                onChange={(e)=>setFormData({...formData , parentphone :e.target.value})}
                                 type="tel" 
                                 inputMode='numeric'
                                 maxLength="10"
@@ -87,6 +97,8 @@ const Step2 = () => {
                                 <h2 className='p-2 text-3xl font-medium'>Country:</h2>
                                 
                                 <input 
+                                value={formData.country}
+                                onChange={(e)=>setFormData({...formData , country:e.target.value})}
                                 type="text" 
                                 id='country' 
                                 name='country' 
@@ -100,8 +112,16 @@ const Step2 = () => {
                 </div>
 
                 <div className="w-250 flex justify-between mt-10 mb-10">
-                <button className='bg-black/30 backdrop-blur-md border border-black  rounded-3xl text-2xl text-gray-400 p-3 w-35 '>prev</button>
-                <button className='bg-black/30 backdrop-blur-md border border-black  rounded-3xl text-2xl text-gray-400 p-3 w-35 '>next</button>
+                    <button 
+                    className='bg-black/30 backdrop-blur-md border border-black  rounded-3xl text-2xl text-gray-400 p-3 w-35 '
+                    onClick={()=>setCurrent(prev => prev-1)}
+                    >prev</button>
+                    
+                    
+                    <button 
+                    className='bg-black/30 backdrop-blur-md border border-black  rounded-3xl text-2xl text-gray-400 p-3 w-35 '
+                    onClick={()=>setCurrent(prev => prev+1)}
+                    >next</button>
                 </div>
             </div>
         </div>
