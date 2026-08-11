@@ -70,6 +70,59 @@ function App() {
   },[formData])
 
 
+  
+   const handlechange = (e)=>{
+    const{name , value} = e.target;
+    setFormData({...formData,[name]:value});
+
+    setError({...error , [name]:""});
+  };
+
+
+  const handleskillchange = (e)=>{
+    const {value , checked} = e.target;
+    if(checked){
+      setFormData({
+        ...formData,
+        skills: [...formData.skills , value]
+      })
+    }else{
+      setFormData({
+        ...formData,
+        skills:formData.skills.filter(
+          skill => skill !== value
+        )
+      })
+    }
+  }
+
+
+  const nextStep = () =>{
+
+    let isvalid = true;
+
+    if(current === 1){
+       isvalid = validate1();
+    }
+    if(current === 2){
+       isvalid = validate2();
+    }
+
+    if(current === 3){
+       isvalid = validate3();
+    }
+
+    if(isvalid){
+      setCurrent(prev=>prev+1);
+    }    
+    
+  }
+
+  const handleSubmit = () =>{
+    toast.success("Form submitted Successfully!")
+  }
+
+
 
   const validate1 = () =>{
 
@@ -191,60 +244,6 @@ function App() {
     setError({})
     setCurrent(1);
   }
-
-
-
-  const handlechange = (e)=>{
-    const{name , value} = e.target;
-    setFormData({...formData,[name]:value});
-
-    setError({...error , [name]:""});
-  };
-
-
-  const handleskillchange = (e)=>{
-    const {value , checked} = e.target;
-    if(checked){
-      setFormData({
-        ...formData,
-        skills: [...formData.skills , value]
-      })
-    }else{
-      setFormData({
-        ...formData,
-        skills:formData.skills.filter(
-          skill => skill !== value
-        )
-      })
-    }
-  }
-
-
-  const nextStep = () =>{
-
-    let isvalid = true;
-
-    if(current === 1){
-       isvalid = validate1();
-    }
-    if(current === 2){
-       isvalid = validate2();
-    }
-
-    if(current === 3){
-       isvalid = validate3();
-    }
-
-    if(isvalid){
-      setCurrent(prev=>prev+1);
-    }    
-    
-  }
-
-  const handleSubmit = () =>{
-    toast.success("Form submitted Successfully!")
-  }
-
 
   return (
 
