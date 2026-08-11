@@ -310,7 +310,7 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange , error , nextS
                 onClick={()=>setCurrent(prev => prev-1)}
                 >prev</button>
                 <button 
-                className='bg-black/30 backdrop-blur-md border border-black  rounded-3xl text-2xl text-gray-400 p-3 w-35 '
+                className='bg-purple-900/40 backdrop-blur-md border border-black  rounded-3xl text-2xl text-gray-400 p-3 w-35 '
                 onClick={nextStep}
                 >next</button>
                 </div>

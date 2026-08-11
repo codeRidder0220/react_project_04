@@ -1,15 +1,27 @@
-import { useState } from "react"
+import { useState , useEffect} from "react"
 import Step1 from "./components/Step1"
 import Step2 from "./components/Step2"
 import Step3 from "./components/Step3"
 import Step4 from "./components/Step4"
+import { Toaster , toast } from "react-hot-toast"
 
 function App() {
 
   const [current , setCurrent] = useState(1);
   const [error , setError] = useState({});
 
-  const [formData , setFormData] = useState({
+
+
+  const [formData , setFormData] = useState(()=>{
+
+    const savedData = localStorage.getItem("formData");
+
+    if(savedData){
+      return JSON.parse(savedData);
+    }
+
+    return{
+
     name:"",
     age:"",
     sex:"",
@@ -35,7 +47,15 @@ function App() {
     currstudy:"",
     skills:[],
 
+    }
+
   })
+
+  useEffect(()=>{
+    localStorage.setItem("formData" , JSON.stringify(formData));
+  },[formData])
+
+
 
   const validate1 = () =>{
 
@@ -126,6 +146,38 @@ function App() {
 
   }
 
+  const resetForm = () =>{
+    setFormData({
+      name:"",
+    age:"",
+    sex:"",
+    dob:"",
+    address:"",
+    pincode:"",
+
+    //step2 =>
+    phone:"",
+    alternativephone:"",
+    state:"",
+    country:"",
+    parentphone:"",
+    email:"",
+
+    //step3 =>
+    college:"",
+    course:"",
+    branch:"",
+    enroll:"",
+    graduate:"",
+    experience:"",
+    currstudy:"",
+    skills:[],
+    })
+
+    setError({})
+    setCurrent(1);
+  }
+
 
 
   const handlechange = (e)=>{
@@ -175,10 +227,16 @@ function App() {
     
   }
 
+  const handleSubmit = () =>{
+    toast.success("Form submitted Successfully!")
+  }
+
 
   return (
 
     <div className="min-h-screen bg-linear-[135deg] from-gray-900 via-blue-900 to-purple-900 ">
+
+      <Toaster position="top-center"/>
 
     {
       current === 1 && (
@@ -199,7 +257,7 @@ function App() {
       current === 3 &&  (<Step3 setCurrent={setCurrent} formData={formData} error={error} nextStep={nextStep} setFormData={setFormData} handlechange={handlechange} handleskillchange={handleskillchange}/>)
     } 
     {
-      current === 4 &&  (<Step4 setCurrent={setCurrent} formData={formData} setFormData={setFormData} handlechange={handlechange}/>)
+      current === 4 &&  (<Step4 setCurrent={setCurrent} formData={formData} handleSubmit={handleSubmit} resetForm={resetForm}/>)
     } 
 
     </div>
