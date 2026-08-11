@@ -9,6 +9,7 @@ function App() {
 
   const [current , setCurrent] = useState(1);
   const [error , setError] = useState({});
+  const [saveStatus , setSaveStatus] = useState("saving");
 
 
 
@@ -52,7 +53,20 @@ function App() {
   })
 
   useEffect(()=>{
-    localStorage.setItem("formData" , JSON.stringify(formData));
+
+    setSaveStatus("saving");
+
+    const timer = setTimeout(() => {
+
+      localStorage.setItem("formData" , JSON.stringify(formData));
+      setSaveStatus("saved");
+
+    }, 1000);
+
+    return ()=>{
+      clearTimeout(timer);
+    }
+  
   },[formData])
 
 
@@ -148,7 +162,7 @@ function App() {
 
   const resetForm = () =>{
     setFormData({
-      name:"",
+    name:"",
     age:"",
     sex:"",
     dob:"",
@@ -237,6 +251,10 @@ function App() {
     <div className="min-h-screen bg-linear-[135deg] from-gray-900 via-blue-900 to-purple-900 ">
 
       <Toaster position="top-center"/>
+
+      <div
+      className="fixed top-5 right-5 z-50 bg-black/30 backdrop-blur-md border border-white/20 rounded-xl px-5 py-3 text-white"
+      >{saveStatus === "saving" ? "saving..." : "saved✔️"}</div>
 
     {
       current === 1 && (
