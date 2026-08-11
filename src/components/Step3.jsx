@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillchange}) => {
+const Step3 = ({setCurrent ,formData , setFormData ,handlechange , error , nextStep  ,handleskillchange}) => {
   return (
 
     <div>
@@ -16,7 +16,7 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
                     <div className='flex'>
                         <div className='w-125 h-140 flex flex-col'>
 
-                            <div className=' pl-15 pt-10  mt-10'>
+                            <div className=' pl-15 pt-10  mt-8'>
                                 <h2 className='p-2 text-3xl font-medium'>College/university:</h2>
 
                                 <input 
@@ -27,9 +27,14 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
                                 placeholder='college/university' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
                                 />
+                                {
+                                    error.college&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.college}</p>
+                                    )
+                                }
                             </div>
 
-                            <div className=' pl-15 pt-10  mt-12'>
+                            <div className=' pl-15 pt-10  mt-8'>
                                 <h2 className='p-2 text-3xl font-medium'>Course:</h2>
 
                                 <input 
@@ -40,10 +45,15 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
                                 placeholder='course name' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
                                 />
+                                {
+                                    error.course&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.course}</p>
+                                    )
+                                }
 
                             </div>
 
-                            <div className=' pl-15 pt-10  mt-12'>
+                            <div className=' pl-15 pt-10  mt-8'>
                                 <h2 className='p-2 text-3xl font-medium'>Branch:</h2>
 
                                 <select 
@@ -62,6 +72,11 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
                                     <option value="Mechanical">Mechanical</option>
 
                                 </select>
+                                {
+                                    error.branch&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.branch}</p>
+                                    )
+                                }
 
                             </div>
 
@@ -90,6 +105,11 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
                                 onChange={handlechange}
                                 />
                                 <label className='text-2xl font-medium pl-2' htmlFor="no">No</label>
+                                {
+                                    error.currstudy&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.currstudy}</p>
+                                    )
+                                }
             
                             </div>
 
@@ -97,7 +117,7 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
 
                         <div className=' w-125 h-140'>
 
-                            <div className=' pl-15 pt-10  mt-10'>
+                            <div className=' pl-15 pt-10  mt-8'>
                                 <h2 className='p-2 text-3xl font-medium'>Enrollment year:</h2>
 
                                 <select 
@@ -117,10 +137,15 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
             
 
                                 </select>
+                                {
+                                    error.enroll&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.enroll}</p>
+                                    )
+                                }
 
                             </div>
 
-                            <div className=' pl-15 pt-10  mt-10'>
+                            <div className=' pl-15 pt-10  mt-9'>
                                 <h2 className='p-2 text-3xl font-medium'>Graduation year:</h2>
 
                                 <select 
@@ -139,6 +164,11 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
                                     <option value="2023">2030</option>
 
                                 </select>
+                                {
+                                    error.graduate&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.graduate}</p>
+                                    )
+                                }
 
                             </div>
 
@@ -162,6 +192,11 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
                                     <option value="3+ years">3+ years</option>
 
                                 </select>
+                                {
+                                    error.experience&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.experience}</p>
+                                    )
+                                }
             
                             </div>
 
@@ -276,7 +311,7 @@ const Step3 = ({setCurrent ,formData , setFormData ,handlechange ,handleskillcha
                 >prev</button>
                 <button 
                 className='bg-black/30 backdrop-blur-md border border-black  rounded-3xl text-2xl text-gray-400 p-3 w-35 '
-                onClick={()=>setCurrent(prev => prev+1)}
+                onClick={nextStep}
                 >next</button>
                 </div>
             </div>

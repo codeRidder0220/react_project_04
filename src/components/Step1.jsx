@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Step1 = ({setCurrent ,formData , setFormData , handlechange}) => {
+const Step1 = ({setCurrent ,formData  ,  error , nextStep , handlechange}) => {
   return (
 
     <div>
@@ -16,7 +16,7 @@ const Step1 = ({setCurrent ,formData , setFormData , handlechange}) => {
                     <div className='flex'>
                         <div className='w-125 h-140 flex flex-col'>
 
-                            <div className=' pl-15 pt-10  mt-10'>
+                            <div className=' pl-15 pt-10  mt-5'>
                                 <h2 className='p-2 text-3xl font-medium'>Name:</h2>
 
                                 <input 
@@ -27,9 +27,15 @@ const Step1 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 placeholder='Enter your name' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
                                 />
+                                {
+                                    error.name&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.name}</p>
+                                    )
+                                }
+
                             </div>
 
-                            <div className=' pl-15 pt-10  mt-12'>
+                            <div className=' pl-15 pt-10  mt-10'>
                                 <h2 className='p-2 text-3xl font-medium'>Age:</h2>
 
                                 <input 
@@ -40,6 +46,12 @@ const Step1 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 placeholder='Enter your Age' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
                                 />
+                                {
+                                    error.age&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.age}</p>
+                                    )
+                                }
+                                
 
                             </div>
 
@@ -68,14 +80,19 @@ const Step1 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 onChange={handlechange}
                                 />
                                 <label className='text-2xl font-medium pl-2' htmlFor="female">Female</label>
-            
+                                
+                                {
+                                    error.sex&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.sex}</p>
+                                    )
+                                }
                             </div>
 
                         </div>
 
                         <div className=' w-125 h-140'>
 
-                            <div className=' pl-15 pt-10  mt-10'>
+                            <div className=' pl-15 pt-10  mt-6'>
                                 <h2 className='p-2 text-3xl font-medium'>Date of birth :</h2>
 
                                 <input 
@@ -87,10 +104,15 @@ const Step1 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 name='dob' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent  placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
                                 />
+                                {
+                                    error.dob&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.dob}</p>
+                                    )
+                                }
 
                             </div>
 
-                            <div className=' pl-15 pt-10  mt-12'>
+                            <div className=' pl-15 pt-10  mt-10'>
                                 <h2 className='p-2 text-3xl font-medium'>Address :</h2> 
 
                                 <input
@@ -101,10 +123,15 @@ const Step1 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 placeholder='Enter your Address' 
                                 className='w-100 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
                                 />
+                                {
+                                    error.address&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.address}</p>
+                                    )
+                                }
 
                             </div>
 
-                            <div className=' pl-15 py-5  mt-8'>
+                            <div className=' pl-15 py-5  mt-6'>
 
                                 <h2 className='p-2 text-3xl font-medium'>Pin code :</h2>
                                 
@@ -119,6 +146,11 @@ const Step1 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 inputMode='numeric' 
                                 className="w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500" 
                                 />
+                                {
+                                    error.pincode&&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.pincode}</p>
+                                    )
+                                }
             
                             </div>
                         </div>
@@ -128,7 +160,7 @@ const Step1 = ({setCurrent ,formData , setFormData , handlechange}) => {
                 <div className="w-250 flex justify-end mt-10 mb-10">
                 <button 
                 className='bg-black/30 backdrop-blur-md border border-black  rounded-3xl text-2xl text-gray-400 p-3 w-35 '
-                onClick={()=>setCurrent(prev => prev+1)}
+                onClick={nextStep}
                 >next
                 </button>
 

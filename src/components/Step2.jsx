@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Step2 = ({setCurrent ,formData , setFormData , handlechange}) => {
+const Step2 = ({setCurrent ,formData ,setFormData, error , nextStep , handlechange}) => {
   return (
 
     <div>
@@ -16,7 +16,7 @@ const Step2 = ({setCurrent ,formData , setFormData , handlechange}) => {
                     <div className='flex'>
                         <div className='w-125 h-140 flex flex-col'>
 
-                            <div className=' pl-15 pt-10  mt-10'>
+                            <div className=' pl-15 pt-10  mt-5'>
                                 <h2 className='p-2 text-3xl font-medium'>phone number:</h2>
 
                                 <input 
@@ -29,9 +29,14 @@ const Step2 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 maxLength="10"
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
                                 />
+                                {
+                                    error.phone &&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.phone}</p>
+                                    )
+                                }
                             </div>
 
-                            <div className=' pl-15 pt-10  mt-12'>
+                            <div className=' pl-15 pt-10  mt-7'>
                                 <h2 className='p-2 text-3xl font-medium'>Alternate number:</h2>
 
                                 <input 
@@ -44,6 +49,11 @@ const Step2 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 maxLength="10"
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 '
                                 />
+                                {
+                                    error.alternativephone &&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.alternativephone}</p>
+                                    )
+                                }
 
                             </div>
 
@@ -58,6 +68,11 @@ const Step2 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 placeholder='State name' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500 '
                                 />
+                                {
+                                    error.state &&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.state}</p>
+                                    )
+                                }
 
                             </div>
 
@@ -65,7 +80,7 @@ const Step2 = ({setCurrent ,formData , setFormData , handlechange}) => {
 
                         <div className=' w-125 h-140'>
 
-                            <div className=' pl-15 pt-10  mt-10'>
+                            <div className=' pl-15 pt-10  mt-5'>
                                 <h2 className='p-2 text-3xl font-medium'>E-mail :</h2>
 
                                 <input
@@ -76,10 +91,15 @@ const Step2 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 name='email' 
                                 className='w-100 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent  placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
                                 />
+                                {
+                                    error.email &&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.email}</p>
+                                    )
+                                }
 
                             </div>
 
-                            <div className=' pl-15 pt-10  mt-12'>
+                            <div className=' pl-15 pt-10  mt-7'>
                                 <h2 className='p-2 text-3xl font-medium'>Parent number:</h2> 
 
                                 <input 
@@ -92,6 +112,11 @@ const Step2 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 placeholder='parent number' 
                                 className='w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500'
                                 />
+                                {
+                                    error.parentphone &&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.parentphone}</p>
+                                    )
+                                }
 
                             </div>
 
@@ -108,6 +133,11 @@ const Step2 = ({setCurrent ,formData , setFormData , handlechange}) => {
                                 placeholder='country name' 
                                 className="w-75 pl-5 h-12 rounded-2xl border border-gray-900 text-2xl bg-transparent text-white placeholder:text-gray-700 placeholder:text-2xl outline-none caret-purple-500" 
                                 />
+                                {
+                                    error.country &&(
+                                        <p className='text-red-500 text-sm pl-2'>{error.country}</p>
+                                    )
+                                }
             
                             </div>
                         </div>
@@ -123,7 +153,7 @@ const Step2 = ({setCurrent ,formData , setFormData , handlechange}) => {
                     
                     <button 
                     className='bg-black/30 backdrop-blur-md border border-black  rounded-3xl text-2xl text-gray-400 p-3 w-35 '
-                    onClick={()=>setCurrent(prev => prev+1)}
+                    onClick={nextStep}
                     >next</button>
                 </div>
             </div>
